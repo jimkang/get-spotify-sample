@@ -1,6 +1,6 @@
 {
   "name": "get-spotify-sample",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gets audio for a sample of a Spotify track.",
   "main": "index.js",
   "scripts": {
