@@ -1,7 +1,7 @@
 get-spotify-sample
 ==================
 
-Gets audio for a sample of a Spotify track as an ArrayBuffer in the browser and a Buffer in Node. [Here's a demo.](http://jimkang/get-spotify-sample/demo)
+Gets audio for a sample of a Spotify track as an ArrayBuffer in the browser and a Buffer in Node. [Here's a demo.](http://jimkang.com/get-spotify-sample/demo)
 
 Installation
 ------------
