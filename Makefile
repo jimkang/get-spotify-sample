@@ -4,7 +4,7 @@ test:
 	node tests/basictests.js
 
 pushall:
-	git push origin master && npm publish
+	git push origin gh-pages && npm publish
 
 run-demo:
 	wzrd demo/app.js:demo/index.js -- -d
