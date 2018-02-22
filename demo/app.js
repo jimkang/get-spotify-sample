@@ -5,12 +5,12 @@ var handleError = require('handle-error-web');
 var getSpotifySample;
 var sourceNode;
 
-((function go() {
+(function go() {
   getSpotifySample = GetSpotifySample({
     request
   });
   wireButton();
-})());
+})();
 
 function wireButton() {
   var button = document.querySelector('.get-audio-button');
@@ -25,8 +25,7 @@ function getAudioForTrack() {
 function playAudio(error, buffer) {
   if (error) {
     handleError(error);
-  }
-  else {
+  } else {
     var audioContext = new AudioContext();
     audioContext.decodeAudioData(buffer, playBuffer);
   }

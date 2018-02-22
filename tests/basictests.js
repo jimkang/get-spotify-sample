@@ -12,9 +12,7 @@ var testCases = [
   '3yNVfRQlUPViUh8O2V9SQn'
 ];
 
-var badTracks = [
-  'spotify:track:badtrackgimLv2eAKyk1NB'
-];
+var badTracks = ['spotify:track:badtrackgimLv2eAKyk1NB'];
 
 testCases.forEach(runTest);
 badTracks.forEach(runBadTrackTest);
@@ -33,7 +31,7 @@ function runTest(trackURI) {
       useCreds
     );
 
-    function useCreds(error, token) {    
+    function useCreds(error, token) {
       var getSpotifySample = GetSpotifySample({
         request,
         bearerToken: token
