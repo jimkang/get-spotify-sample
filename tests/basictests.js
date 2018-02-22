@@ -4,6 +4,8 @@ var test = require('tape');
 var GetSpotifySample = require('../index');
 var request = require('request');
 var assertNoError = require('assert-no-error');
+var getClientCredentials = require('get-spotify-client-credentials');
+var config = require('./config');
 
 var testCases = [
   'spotify:track:4q9QVIaLqjbcoqeCfM2zan',
@@ -21,10 +23,23 @@ function runTest(trackURI) {
   test('Get track audio', basicTest);
 
   function basicTest(t) {
-    var getSpotifySample = GetSpotifySample({
-      request: request
-    });
-    getSpotifySample(trackURI, checkAudio);
+    // APIs now require auth.
+    getClientCredentials(
+      {
+        clientId: config.clientId,
+        clientSecret: config.clientSecret,
+        request
+      },
+      useCreds
+    );
+
+    function useCreds(error, token) {    
+      var getSpotifySample = GetSpotifySample({
+        request,
+        bearerToken: token
+      });
+      getSpotifySample(trackURI, checkAudio);
+    }
 
     function checkAudio(error, buffer) {
       assertNoError(t.ok, error, 'No error while getting audio.');
@@ -39,10 +54,23 @@ function runBadTrackTest(trackURI) {
   test('Get track audio for bad track', basicTest);
 
   function basicTest(t) {
-    var getSpotifySample = GetSpotifySample({
-      request: request
-    });
-    getSpotifySample(trackURI, checkAudio);
+    // APIs now require auth.
+    getClientCredentials(
+      {
+        clientId: config.clientId,
+        clientSecret: config.clientSecret,
+        request
+      },
+      useCreds
+    );
+
+    function useCreds(error, token) {
+      var getSpotifySample = GetSpotifySample({
+        request,
+        bearerToken: token
+      });
+      getSpotifySample(trackURI, checkAudio);
+    }
 
     function checkAudio(error) {
       t.ok(error, 'There is an error.');

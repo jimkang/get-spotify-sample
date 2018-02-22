@@ -11,3 +11,6 @@ run-demo:
 
 build-demo:
 	$(BROWSERIFY) demo/app.js > demo/index.js
+
+prettier:
+	prettier --single-quote --write "**/*.js"

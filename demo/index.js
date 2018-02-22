@@ -37,19 +37,10 @@ function playAudio(error, buffer) {
       sourceNode.stop();
     }
     sourceNode = audioContext.createBufferSource();
-    // var pannerNode = audioContext.createStereoPanner();
-
-    // pannerNode.connect(audioContext.destination);
-    // sourceNode.connect(pannerNode);
     sourceNode.connect(audioContext.destination);
-
-    // pannerNode.pan.value = pan;
 
     sourceNode.buffer = decodedBuffer;
     sourceNode.loop = true;
-    // sourceNode.loopStart = 2.98;
-    // sourceNode.loopEnd = 3.80;
-    // sourceNode.playbackRate.value = rate;
 
     sourceNode.start();
   }
@@ -61,10 +52,12 @@ var sb = require('standard-bail')();
 
 function GetSpotifySample(opts) {
   var request;
+  var bearerToken;
   if (opts) {
     request = opts.request;
+    bearerToken = opts.bearerToken;
   }
-  var spResolve = SpotifyResolve({request: request});
+  var spResolve = SpotifyResolve({request, bearerToken});
 
   return getSpotifySample;
 

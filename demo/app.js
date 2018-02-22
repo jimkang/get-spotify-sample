@@ -7,7 +7,7 @@ var sourceNode;
 
 ((function go() {
   getSpotifySample = GetSpotifySample({
-    request: request
+    request
   });
   wireButton();
 })());

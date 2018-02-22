@@ -3,10 +3,12 @@ var sb = require('standard-bail')();
 
 function GetSpotifySample(opts) {
   var request;
+  var bearerToken;
   if (opts) {
     request = opts.request;
+    bearerToken = opts.bearerToken;
   }
-  var spResolve = SpotifyResolve({request: request});
+  var spResolve = SpotifyResolve({request, bearerToken});
 
   return getSpotifySample;
 
