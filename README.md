@@ -1,9 +1,7 @@
 get-spotify-sample
 ==================
 
-Gets audio for a sample of a Spotify track as an ArrayBuffer in the browser and a Buffer in Node. 
-
-[TODO: Update demo to ask for credentials.](http://jimkang.com/get-spotify-sample/demo)
+Gets audio for a sample of a Spotify track as an ArrayBuffer in the browser and a Buffer in Node.
 
 Installation
 ------------
@@ -14,13 +12,25 @@ Usage
 -----
 
     var GetSpotifySample = require('get-spotify-sample');
+    var getClientCredentials = require('get-spotify-client-credentials');
     var request = require('request');
 
-    var getSpotifySample = GetSpotifySample({
-      request,
-      bearerToken
-    });
-    getSpotifySample('spotify:track:2ye2Wgw4gimLv2eAKyk1NB', playAudio);
+    getClientCredentials(
+      {
+        clientId: 'Your Spotify API client id',
+        clientSecret: 'Your Spotify API client secret',
+        request
+      },
+      useCreds
+    );
+
+    function useCreds(error, bearerToken) {
+      var getSpotifySample = GetSpotifySample({
+        request,
+        bearerToken
+      });
+      getSpotifySample('spotify:track:2ye2Wgw4gimLv2eAKyk1NB', playAudio);
+    }
 
     function playAudio(error, buffer) {
       if (error) {

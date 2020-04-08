@@ -24,8 +24,8 @@ function runTest(trackURI) {
     // APIs now require auth.
     getClientCredentials(
       {
-        clientId: config.clientId,
-        clientSecret: config.clientSecret,
+        clientId: config.spotify.clientId,
+        clientSecret: config.spotify.clientSecret,
         request
       },
       useCreds
@@ -55,8 +55,8 @@ function runBadTrackTest(trackURI) {
     // APIs now require auth.
     getClientCredentials(
       {
-        clientId: config.clientId,
-        clientSecret: config.clientSecret,
+        clientId: config.spotify.clientId,
+        clientSecret: config.spotify.clientSecret,
         request
       },
       useCreds
